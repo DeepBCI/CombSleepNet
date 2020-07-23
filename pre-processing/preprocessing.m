@@ -13,8 +13,8 @@ hyp_n = tmp(1, :);
 class = ["W", "R", "1", "2", "3"];
 %% Loading data #3
 for i = 1:length(psg_n)
-    [sleep_h{i}, ~] = edfread(cat(2, data_dir, psg_n{i}));
-    [~, annotation] = readEDF(cat(2, data_dir, hyp_n{i}));
+    [sleep_h{i}, ~] = edfread(cat(2, char(data_dir), psg_n{i}));
+    [~, annotation] = readEDF(cat(2, char(data_dir), hyp_n{i}));
     for j = 1:length(annotation.annotation.event)
         annotation.annotation.event{j} = annotation.annotation.event{j}(end);
     end
