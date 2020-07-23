@@ -37,3 +37,4 @@ Department of Brain and Cognitive Engineering, Korea University
 Email: kme0115@korea.ac.kr
 
 ## License:
+MIT License
