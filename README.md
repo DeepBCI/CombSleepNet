@@ -29,3 +29,11 @@ Hyeong-Jin Kim, Minji Lee, Dong-Ok Won, and Seong-Whan Lee, "CombSleepNet: Combi
 ## Result:
 Hypnogram and posterior probability distribution with CombSleepNet for one subject of Sleep-EDF database
 <img src="/img/fig3.png" width="100%" height="100%"></img>
+
+## Contact:
+Hyeong-Jin Kim
+
+Department of Brain and Cognitive Engineering, Korea University
+Email: kme0115@korea.ac.kr
+
+## License:
