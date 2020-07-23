@@ -36,8 +36,10 @@ args = parser.parse_args()
 if not os.path.exists(args.out_dir):
     os.mkdir(args.out_dir)
 
-torch.cuda.get_device_name(0)
 use_cuda = torch.cuda.is_available()
+if use_cuda:
+    torch.cuda.get_device_name(0)
+
 
 def preprocess_data(path, filename):
     f = io.loadmat(path + filename)
@@ -215,7 +217,8 @@ for epoch in range(args.cnn_epoch):
                     cf_F1.append((2 * test_cf[ii][jj]) / (sum(test_cf[ii]) + sum(np.transpose(test_cf)[jj])))
 
             cf_F1 = torch.tensor(cf_F1).reshape([5, 5])
-            cf_F1 = cf_F1.cuda()
+            if use_cuda:
+                cf_F1 = cf_F1.cuda()
             acc = corr_num / total_num * 100
             F1 = (cf_F1[0][0] + cf_F1[1][1] + cf_F1[2][2] + cf_F1[3][3] + cf_F1[4][4]) / 5
             print("acc: {:.2f}".format(corr_num / total_num * 100))
@@ -239,7 +242,8 @@ for epoch in range(args.cnn_epoch):
             cf_F1.append((2 * train_cf[ii][jj]) / (sum(train_cf[ii]) + sum(np.transpose(train_cf)[jj])))
 
     cf_F1 = torch.tensor(cf_F1).reshape([5, 5])
-    cf_F1 = cf_F1.cuda()
+    if use_cuda:
+        cf_F1 = cf_F1.cuda()
     print("train cf in epoch: ")
     print(train_cf)
     print(cf_F1)
@@ -344,7 +348,8 @@ for epoch in range(args.lstm_epoch):
                     cf_F1.append((2 * test_cf[ii][jj]) / (sum(test_cf[ii]) + sum(np.transpose(test_cf)[jj])))
 
             cf_F1 = torch.tensor(cf_F1).reshape([5, 5])
-            cf_F1 = cf_F1.cuda()
+            if use_cuda:
+                cf_F1 = cf_F1.cuda()
             acc = corr_num / total_num * 100
             F1 = (cf_F1[0][0] + cf_F1[1][1] + cf_F1[2][2] + cf_F1[3][3] + cf_F1[4][4]) / 5
             print("acc: {:.2f}".format(corr_num / total_num * 100))
@@ -368,7 +373,8 @@ for epoch in range(args.lstm_epoch):
             cf_F1.append((2 * train_cf[ii][jj]) / (sum(train_cf[ii]) + sum(np.transpose(train_cf)[jj])))
 
     cf_F1 = torch.tensor(cf_F1).reshape([5, 5])
-    cf_F1 = cf_F1.cuda()
+    if use_cuda:
+        cf_F1 = cf_F1.cuda()
     print("train cf in epoch: ")
     print(train_cf)
     print(cf_F1)
