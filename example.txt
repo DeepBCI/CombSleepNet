@@ -1,2 +1,2 @@
-python train.py --data_dir "./example_data/" --out_dir "./parameter/" --seq_len 10 --cnn_lr 1e-5 --lstm_lr 1e-3 --cnn_epoch 30 --lstm_epoch 15 --cv 1
-python test.py --data_dir "./example_data/" --parameter_dir "./parameter/" --out_dir "./result/" --seq_len 10 --cnn_lr 1e-5 --lstm_lr 1e-3 --cv 1
+python train.py --data_dir "./pre-processing/" --out_dir "./parameter/" --seq_len 10 --cnn_lr 1e-5 --lstm_lr 1e-3 --cnn_epoch 30 --lstm_epoch 15 --cv 1
+python test.py --data_dir "./pre-processing/" --parameter_dir "./parameter/" --out_dir "./result/" --seq_len 10 --cnn_lr 1e-5 --lstm_lr 1e-3 --cv 1
