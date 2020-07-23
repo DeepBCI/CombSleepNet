@@ -1,24 +1,39 @@
 # CombSleepNet
-Hyeong-Jin Kim, Minji Lee, Dong-Ok Won, and Seong-Whan Lee, "CombSleepNet: Combination of Spectral–Temporal CNN and Bi-LSTM with Dense Connectivity for Automatic Sleep Stage Scoring," submit to IEEE Journal of Biomedical and Health Informatics.
+Hyeong-Jin Kim, Minji Lee, Dong-Ok Won, and Seong-Whan Lee, "CombSleepNet: Combination of Spectral–Temporal CNN and Bi-LSTM with Dense Connectivity for Automatic Sleep Stage Scoring," submit to *IEEE Journal of Biomedical and Health Informatics*.
 
-<img src="/img/fig1.png" width="100%" height="100%" title="CombSleepNet" alt="Overview of the CombSleepNet architecture"></img>
+<img src="/img/fig1.png" width="100%" height="100%"></img>
 
 ## How to run
 1. Download the Sleep-EDF database
    + Sleep-EDF database is available [here][sleep-edf].
-   [sleep-edf]: https://physionet.org/content/sleep-edfx/1.0.0/
+   
+[sleep-edf]: https://physionet.org/content/sleep-edfx/1.0.0/
    
 2. Data pre-processing
    + Change directory to ```./CombSleepNet/pre-processing```
-   + Unzip ```eeflab.zip```
+   + Unzip ```eeglab.zip```
    + Run ```preprocessing.m```
    
 3. Training and testing the CombSleepNet
    + Change directory to ```./CombSleepNet```
-   + Run the script to train CombSleepNet 
+   + Refer to ```example.txt``` to train and test CombSleepNet.
    
-   ```python train.py --data_dir "./example_data/" --out_dir "./parameter/" --seq_len 10 --cnn_lr 1e-5 --lstm_lr 1e-3 --cnn_epoch 30 --lstm_epoch 15 --cv 1```
-   
-   + Run the script to test CombSleepNet
-   
-   ```python test.py --data_dir "./example_data/" --parameter_dir "./parameter/" --out_dir "./result/" --seq_len 10 --cnn_lr 1e-5 --lstm_lr 1e-3 --cv 1```
+## Environment:
++ Matlab R2019b
++ Python3
++ Pytorch v1.3.1
++ numpy v1.17.4
++ scipy v1.3.3
++ scikit-learn v0.22
+
+## Result:
+Hypnogram and posterior probability distribution with CombSleepNet for one subject of Sleep-EDF database
+<img src="/img/fig3.png" width="100%" height="100%"></img>
+
+## Contact:
+Hyeong-Jin Kim
+
+Department of Brain and Cognitive Engineering, Korea University
+Email: kme0115@korea.ac.kr
+
+## License:
