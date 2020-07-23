@@ -6,8 +6,8 @@ Hyeong-Jin Kim, Minji Lee, Dong-Ok Won, and Seong-Whan Lee, "CombSleepNet: Combi
 ## How to run
 1. Download the Sleep-EDF database
    + Sleep-EDF database is available [here][sleep-edf].   
-   **Note that**, we used only 20 people of the Sleep Cassette data.   
-   i.e. from SC4001 to SC4192
+   **Note that, we used only 20 people of the Sleep Cassette data.**    
+   **i.e. from subject SC4001 to SC4192 in the sleep-cassette.**    
    
 [sleep-edf]: https://physionet.org/content/sleep-edfx/1.0.0/
    
