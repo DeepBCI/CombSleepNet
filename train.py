@@ -99,9 +99,6 @@ for ii in i:
 del psg_train[i[0]:i[1] + 1]
 del hyp_train[i[0]:i[1] + 1]
 
-print(psg_train)
-print(hyp_train)
-
 num_layers = 2
 cnn_batch_size = 10
 rnn_batch_size = 1
