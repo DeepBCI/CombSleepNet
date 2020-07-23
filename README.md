@@ -6,7 +6,8 @@ Hyeong-Jin Kim, Minji Lee, Dong-Ok Won, and Seong-Whan Lee, "CombSleepNet: Combi
 ## How to run
 1. Download the Sleep-EDF database
    + Sleep-EDF database is available [here][sleep-edf].
-   [sleep-edf]: https://physionet.org/content/sleep-edfx/1.0.0/
+   
+[sleep-edf]: https://physionet.org/content/sleep-edfx/1.0.0/
    
 2. Data pre-processing
    + Change directory to ```./CombSleepNet/pre-processing```
