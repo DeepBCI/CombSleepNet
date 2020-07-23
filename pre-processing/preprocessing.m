@@ -47,7 +47,7 @@ end
 for i = 1:length(psg_n) 
 % Bandpass filter
     psg = [];
-    EEG = pop_biosig(cat(2, data_dir, psg_n{i}), 'channels', 1);
+    EEG = pop_biosig(cat(2, char(data_dir), psg_n{i}), 'channels', 1);
     tmp = MakeSMTwithBandpass(EEG, 0.5, 4); 
     psg(1, :) = tmp.dat(1, :);
     tmp = MakeSMTwithBandpass(EEG, 4, 8); 
