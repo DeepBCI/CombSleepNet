@@ -2,7 +2,6 @@
 clear; close all; clc;
 %% Path #2
 addpath(genpath("./edfread/"))
-% addpath(genpath("./eeglab/"))
 data_dir = "your/path/";
 
 tmp = struct2cell(dir(data_dir + "/*PSG.edf"));
@@ -42,28 +41,32 @@ hyp_path = './hyp/';
 if(~exist(hyp_path, 'dir'))
     mkdir(hyp_path);
 end
-for i = 1:length(psg_n) % Bandpass filter
+
+for i = 1:length(psg_n) 
+% Bandpass filter
     psg = [];
     EEG = pop_biosig(cat(2, data_dir, psg_n{i}), 'channels', 1);
-    tmp = MakeSMTwithBandpass(EEG, 0.5, 4); % Apply bandpass filter
+    tmp = MakeSMTwithBandpass(EEG, 0.5, 4); 
     psg(1, :) = tmp.dat(1, :);
-    tmp = MakeSMTwithBandpass(EEG, 4, 8); % Apply bandpass filter
+    tmp = MakeSMTwithBandpass(EEG, 4, 8); 
     psg(2, :) = tmp.dat(1, :);
-    tmp = MakeSMTwithBandpass(EEG, 8, 12); % Apply bandpass filter
+    tmp = MakeSMTwithBandpass(EEG, 8, 12); 
     psg(3, :) = tmp.dat(1, :);
-    tmp = MakeSMTwithBandpass(EEG, 12, 15); % Apply bandpass filter
+    tmp = MakeSMTwithBandpass(EEG, 12, 15); 
     psg(4, :) = tmp.dat(1, :);
     
     psg = single(permute(reshape(psg(:, 1:sleep_h{i}.annotation.starttime(end) * 100), 4, 3000, sleep_h{i}.annotation.starttime(end) / 30), [3, 1, 2]));
     
+% Segmenting hyp
     clear hyp;
-    for j = 1:length(sleep_h{i}.annotation.event) - 1 % Segmenting hyp
+    for j = 1:length(sleep_h{i}.annotation.event) - 1 
         for k = sleep_h{i}.annotation.starttime(j)/30 + 1:sleep_h{i}.annotation.starttime(j + 1) / 30
             hyp(k) = sleep_h{i}.annotation.event(j);
         end
     end
     
-    if find(hyp == 5) % Removing movement / ? samples
+% Removing movement / ? samples
+    if find(hyp == 5) 
         psg(find(hyp == 5), :, :) = [];
         hyp(find(hyp == 5)) = [];
     end
