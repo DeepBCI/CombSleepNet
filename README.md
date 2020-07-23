@@ -33,7 +33,7 @@ Hypnogram and posterior probability distribution with CombSleepNet for one subje
 ## Contact:
 Hyeong-Jin Kim
 
-Department of Brain and Cognitive Engineering, Korea University
+Department of Brain and Cognitive Engineering, Korea University   
 Email: kme0115@korea.ac.kr
 
 ## License:
