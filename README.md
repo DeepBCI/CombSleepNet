@@ -11,7 +11,7 @@ Hyeong-Jin Kim, Minji Lee, Dong-Ok Won, and Seong-Whan Lee, "CombSleepNet: Combi
    
 2. Data pre-processing
    + Change directory to ```./CombSleepNet/pre-processing```
-   + Unzip ```eeflab.zip```
+   + Unzip ```eeglab.zip```
    + Run ```preprocessing.m```
    
 3. Training and testing the CombSleepNet
