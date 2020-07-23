@@ -1,10 +1,10 @@
 %% Clear #1
 clear; close all; clc;
 %% Path #2
-cd("C:\Users\KHJ-work\PycharmProjects\Mine\CombSleepNet_master\pre-processing")
+cd("./pre-processing")
 addpath(genpath("./edfread/"))
 % addpath(genpath("./eeglab/"))
-data_dir = 'D:\format\Documents\MATLAB\sleep-edf-database-expanded-1.0.0\sleep_edf_39\';
+data_dir = "D:/format/Documents/MATLAB/sleep-edf-database-expanded-1.0.0/sleep_edf_39/";
 
 tmp = struct2cell(dir(data_dir + "/*PSG.edf"));
 psg_n = tmp(1, :);
