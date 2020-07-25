@@ -10,9 +10,9 @@ import numpy as np
 import math
 import argparse
 
-import CombSleepNet.cnn as CNN
-import CombSleepNet.lstm as LSTM
-import CombSleepNet.dataset as DS
+import network.cnn as CNN
+import network.lstm as LSTM
+import network.dataset as DS
 
 parser = argparse.ArgumentParser(description='Training CombSleepNet')
 parser.add_argument('--data_dir', type=str,
