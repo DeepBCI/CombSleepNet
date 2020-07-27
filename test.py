@@ -86,7 +86,7 @@ for i in range(len(psg_filelist)):
     hyp_train.append(load_header(hyp_filepath, hyp_filelist[i]))
 
 if args.cv == 14:
-    i = 26
+    i = [26]
 elif args.cv < 14:
     i = [2 * (args.cv - 1), 2 * (args.cv - 1) + 1]
 elif args.cv > 14:
@@ -96,8 +96,12 @@ for ii in i:
     psg_test.append(preprocess_data(psg_filepath, psg_filelist[ii]))
     hyp_test.append(load_header(hyp_filepath, hyp_filelist[ii]))
 
-del psg_train[i[0]:i[1] + 1]
-del hyp_train[i[0]:i[1] + 1]
+if len(i) == 1:
+    del psg_train[i[0]]
+    del hyp_train[i[0]]
+else:
+    del psg_train[i[0]:i[1] + 1]
+    del hyp_train[i[0]:i[1] + 1]
 
 num_layers = 2
 cnn_batch_size = 10
