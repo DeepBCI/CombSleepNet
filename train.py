@@ -205,10 +205,6 @@ for epoch in range(args.cnn_epoch):
                     corr_list.extend(list(np.hstack(test_y.cpu())))
                     pred_list.extend(list(np.hstack(expected_test_y.cpu())))
 
-            print("epoch: {}/{} | step: {}/{} | trn loss: {:.4f} | val loss: {:.4f}".format(
-                epoch + 1, args.cnn_epoch, i + 1, cnn_num_batches, train_loss / 100, test_loss / math.ceil(len(testDataset1))
-            ))
-
             train_loss_list.append(train_loss / 100)
             test_loss_list.append(train_loss / math.ceil(len(testDataset1)))
             train_loss = 0.0
@@ -225,8 +221,8 @@ for epoch in range(args.cnn_epoch):
                 cf_F1 = cf_F1.cuda()
             acc = corr_num / total_num * 100
             F1 = (cf_F1[0][0] + cf_F1[1][1] + cf_F1[2][2] + cf_F1[3][3] + cf_F1[4][4]) / 5
-            print("acc: {:.2f}".format(corr_num / total_num * 100))
-            print("F1 score: {:.2f}".format(F1 * 100))
+            
+            print("epoch: {}/{} | step: {}/{} | acc: {:.2f} | F1 score: {:.2f}".format(epoch + 1, args.cnn_epoch, i + 1, cnn_num_batches, corr_num / total_num * 100, F1 * 100))
             print(test_cf)
 
             if max_F1 < F1:
@@ -248,7 +244,8 @@ for epoch in range(args.cnn_epoch):
     cf_F1 = torch.tensor(cf_F1).reshape([5, 5])
     if use_cuda:
         cf_F1 = cf_F1.cuda()
-    print("train cf in epoch: ")
+        
+    print("epoch: {}/{} | step: {}/{} | acc: {:.2f} | F1 score: {:.2f}".format(epoch + 1, args.cnn_epoch, i + 1, cnn_num_batches, corr_num / total_num * 100, F1 * 100))
     print(train_cf)
     print(cf_F1)
 
@@ -335,11 +332,6 @@ for epoch in range(args.lstm_epoch):
                         corr_list.extend(list(np.hstack(test_y.cpu())))
                         pred_list.extend(list(np.hstack(expected_test_y.cpu())))
 
-            print("epoch: {}/{} | step: {}/{} | trn loss: {:.4f} | val loss: {:.4f}".format(
-                epoch + 1, args.lstm_epoch, i + 1, rnn_num_batches, train_loss / 100,
-                test_loss / math.ceil(len(testDataset2))
-            ))
-
             train_loss_list.append(train_loss / 100)
             test_loss_list.append(train_loss / math.ceil(len(testDataset2)))
             train_loss = 0.0
@@ -356,8 +348,7 @@ for epoch in range(args.lstm_epoch):
                 cf_F1 = cf_F1.cuda()
             acc = corr_num / total_num * 100
             F1 = (cf_F1[0][0] + cf_F1[1][1] + cf_F1[2][2] + cf_F1[3][3] + cf_F1[4][4]) / 5
-            print("acc: {:.2f}".format(corr_num / total_num * 100))
-            print("F1 score: {:.2f}".format(F1 * 100))
+            print("epoch: {}/{} | step: {}/{} | acc: {:.2f} | F1 score: {:.2f}".format(epoch + 1, args.cnn_epoch, i + 1, cnn_num_batches, corr_num / total_num * 100, F1 * 100))
             print(test_cf)
 
             if max_F1 < F1:
@@ -379,6 +370,7 @@ for epoch in range(args.lstm_epoch):
     cf_F1 = torch.tensor(cf_F1).reshape([5, 5])
     if use_cuda:
         cf_F1 = cf_F1.cuda()
-    print("train cf in epoch: ")
+        
+    print("epoch: {}/{} | step: {}/{} | acc: {:.2f} | F1 score: {:.2f}".format(epoch + 1, args.cnn_epoch, i + 1, cnn_num_batches, corr_num / total_num * 100, F1 * 100))
     print(train_cf)
     print(cf_F1)
